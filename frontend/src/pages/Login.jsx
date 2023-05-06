@@ -1,6 +1,33 @@
+import React, { useEffect } from 'react';
 import styled from "styled-components"
 import { mobile, mobileXR, tablet } from "../responsive";
+import { useNavigate } from 'react-router-dom';
 
+const Login = () => {
+  const user = true;
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (user) {
+      navigate("/")
+    }
+  }, [navigate, user])
+  return (
+    <Container>
+      <Wrapper>
+        <Title>SIGN IN</Title>
+        <Form>
+          <Input placeholder="username" />
+          <Input placeholder="password" />
+          <Button>LOG IN</Button>
+          <Link>DO NOT REMEMBER YOUR PASSWORD?</Link>
+          <Link>CREATE A NEW ACCOUNT</Link>
+        </Form>
+      </Wrapper>
+    </Container>
+  )
+}
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -54,22 +81,5 @@ const Link = styled.a`
   text-decoration: underline;
   cursor: pointer;
 `
-
-const Login = () => {
-  return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOG IN</Button>
-          <Link>DO NOT REMEMBER YOUR PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
-        </Form>
-      </Wrapper>
-    </Container>
-  )
-}
 
 export default Login
